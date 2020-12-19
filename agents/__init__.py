@@ -5,6 +5,7 @@ from .DDQN import DDQN
 from .MaxminDQN import MaxminDQN
 from .EnsembleDQN import EnsembleDQN
 from .AveragedDQN import AveragedDQN
+from .ALDQN import ALDQN, PALDQN
 
 from .REINFORCE import REINFORCE
 from .REINFORCEWithBaseline import REINFORCEWithBaseline
