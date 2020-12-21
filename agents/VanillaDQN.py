@@ -270,6 +270,7 @@ class VanillaDQN(BaseAgent):
 
   def learn(self):
     mode = 'Train'
+    # state:(bs, c, H, W), action:(bs,), reward:(bs,), next_state:(bs, c, H, W), mask:(bs, )
     batch = self.replay.sample(['state', 'action', 'reward', 'next_state', 'mask'], self.cfg['batch_size'])
     q, q_target = self.comput_q(batch), self.compute_q_target(batch)
     # todo: log the mean of Q(s, a) and y_target

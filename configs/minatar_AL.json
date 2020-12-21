@@ -14,7 +14,7 @@
   "agent": [
     {
       "name": ["ALDQN"],
-      "alpha": 0.9
+      "alpha": [0.9]
     }
   ],
   "train_steps": [5e6],

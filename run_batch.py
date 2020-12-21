@@ -23,10 +23,10 @@ def train(config_file, config_idx, seeds, gpu=False):
 if __name__ == '__main__':
     mp.set_start_method('spawn')
 
-    train(config_file='minatar.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar.json', config_idx=3, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_AL.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_AL.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_AL.json', config_idx=3, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_AL.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_AL.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
 
     

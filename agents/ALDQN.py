@@ -24,7 +24,8 @@ class ALDQN(VanillaDQN):
     def compute_q_target(self, batch):
         with torch.no_grad():
             q_cur = self.Q_net_target[0](batch.state)
-            q_s_a = q_cur.gather(1, batch.action.long()).squeeze() # (bs, )
+            action_idx = batch.action.unsqueeze(1)
+            q_s_a = q_cur.gather(1, action_idx.long()).squeeze() # (bs, )
             q_cur_max = q_cur.max(1)[0] # (bs, )
             # Bellman optimal operator
             q_next = self.Q_net_target[0](batch.next_state).max(1)[0]
@@ -56,14 +57,15 @@ class PALDQN(VanillaDQN):
     def compute_q_target(self, batch):
         with torch.no_grad():
             q_cur = self.Q_net_target[0](batch.state)
+            action_idx = batch.action.unsqueeze(1)
             # q(s, a)
-            q_s_a = q_cur.gather(1, batch.action.long()).squeeze()
+            q_s_a = q_cur.gather(1, action_idx.long()).squeeze()
             # v(s)
             q_cur_max = q_cur.max(1)[0]
 
             q_next = self.Q_net_target[0](batch.next_state)
             # q(s', a)
-            q_next_a = q_next.gather(1, batch.action.long()).squeeze()
+            q_next_a = q_next.gather(1, action_idx.long()).squeeze()
             # v(s')
             q_next_max = q_next.max(1)[0]
 

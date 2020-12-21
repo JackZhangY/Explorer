@@ -11,7 +11,7 @@ def main(config_file, config_idx, seed=1, gpu=False):
   parser.add_argument('--config_file', type=str, default='./configs/{}'.format(config_file), help='Configuration file for the chosen model')
   parser.add_argument('--config_idx', type=int, default=config_idx, help='Configuration index')
   args = parser.parse_args()
-  
+
   sweeper = Sweeper(args.config_file)
   cfg = sweeper.generate_config_for_idx(args.config_idx)
   
@@ -33,25 +33,28 @@ def main(config_file, config_idx, seed=1, gpu=False):
   cfg['exp'] = args.config_file.split('/')[-1].split('.')[0]
 
   if cfg['agent']['name'] == 'DQN' or cfg['agent']['name'] == 'DDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"lr={cfg['optimizer']['kwargs']['lr']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'AveragedDQN' or cfg['agent']['name'] == 'MaxminDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"lr={cfg['optimizer']['kwargs']['lr']}_N={cfg['agent']['target_networks_num']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'AdamDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"lr={cfg['optimizer']['kwargs']['lr']}_eps={cfg['optimizer']['kwargs']['eps']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'MunchausenDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"tau={cfg['agent']['entropy_temperature']}_alpha={cfg['agent']['log_reward_scaling']}_" \
                f"clip={cfg['agent']['log_reward_clipping']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'AvgMunchausenDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"tau={cfg['agent']['entropy_temperature']}_alpha={cfg['agent']['log_reward_scaling']}_" \
                f"clip={cfg['agent']['log_reward_clipping']}_num_pi={cfg['agent']['num_policies']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'VanillaDQN':
-    logs_dir = f"../all_logs/Explorer-v2/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"_{cfg['seed']}"
+  elif cfg['agent']['name'] == 'ALDQN' or cfg['agent']['name'] == 'PALDQN':
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+               f"alpha={cfg['agent']['alpha']}_{cfg['seed']}"
   else:
     raise Exception('logs_dir is empty!!!!')
 

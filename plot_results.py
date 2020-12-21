@@ -249,7 +249,7 @@ million = length_dict[env][1]
 alg_names = envs_dict[env]
 
 # public logs files dir
-env_dir = '../all_logs/Explorer-v2/' + env + '/'
+env_dir = '../all_logs/Explorer/' + env + '/'
 
 plt.figure(figsize=(16, 8), dpi=80)
 # plot averaged return performance
