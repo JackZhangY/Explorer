@@ -13,7 +13,10 @@
   ],
   "agent": [
     {
-      "name": ["DQN"]
+      "name": ["MDQN"],
+      "ent_temp": [0.03],
+      "log_r_scaling": [0.9],
+      "log_r_clipping": [-1]
     }
   ],
   "train_steps": [5e6],

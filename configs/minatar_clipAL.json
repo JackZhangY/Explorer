@@ -13,7 +13,9 @@
   ],
   "agent": [
     {
-      "name": ["DQN"]
+      "name": ["clipALDQN"],
+      "alpha": [0.8],
+      "clipratio": [0.8]
     }
   ],
   "train_steps": [5e6],

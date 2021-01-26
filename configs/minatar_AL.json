@@ -14,7 +14,7 @@
   "agent": [
     {
       "name": ["ALDQN"],
-      "alpha": [0.9]
+      "alpha": [0.7]
     }
   ],
   "train_steps": [5e6],
@@ -46,5 +46,6 @@
   "gradient_clip": [-1],
   "target_network_update_frequency": [1000],
   "network_update_frequency": [1],
-  "generate_random_seed": [false]
+  "generate_random_seed": [false],
+  "log_action_gap": [true]
 }

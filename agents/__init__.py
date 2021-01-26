@@ -6,6 +6,9 @@ from .MaxminDQN import MaxminDQN
 from .EnsembleDQN import EnsembleDQN
 from .AveragedDQN import AveragedDQN
 from .ALDQN import ALDQN, PALDQN
+from .clipALDQN import clipALDQN, genALDQN, clipPALDQN, decayALDQN
+from .CVIDQN import CVIDQN
+from .MDQN import MDQN
 
 from .REINFORCE import REINFORCE
 from .REINFORCEWithBaseline import REINFORCEWithBaseline

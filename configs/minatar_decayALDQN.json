@@ -13,7 +13,10 @@
   ],
   "agent": [
     {
-      "name": ["DQN"]
+      "name": ["decayALDQN"],
+      "alpha": [0.9],
+      "clipratio": [0.8],
+      "beta": [-0.8]
     }
   ],
   "train_steps": [5e6],

@@ -26,6 +26,7 @@ class VanillaDQN(BaseAgent):
     self.train_steps = int(cfg['train_steps'])
     self.test_interval_steps = int(cfg['test_interval_steps'])
     self.num_eval_episodes = int(cfg['num_eval_episodes'])
+    self.log_action_gap = cfg['log_action_gap']
     # self.test_per_episodes = int(cfg['test_per_episodes'])
     self.display_interval = cfg['display_interval']
     self.gradient_clip = cfg['gradient_clip']
@@ -171,53 +172,6 @@ class VanillaDQN(BaseAgent):
     self.set_net_mode('Train')
     return test_average_episode_reward
 
-  # def run_steps(self, render=False):
-  #   # Run for multiple episodes
-  #   self.step_count = 0
-  #   self.episode_count = 0
-  #   self.result = {'Train': [], 'Test': []}
-  #   self.episode_return_list = {'Train': [], 'Test': []}
-  #   mode = 'Train'
-  #   self.start_time = time.time()
-  #   self.reset_game('Train')
-  #   self.reset_game('Test')
-  #   while self.step_count < self.train_steps:
-  #     if mode == 'Train' and self.test_per_episodes > 0 and self.episode_count % self.test_per_episodes == 0:
-  #       mode = 'Test'
-  #     else:
-  #       mode = 'Train'
-  #     # Set Q network to training/evaluation mode
-  #     self.set_net_mode(mode)
-  #     # Run for one episode
-  #     self.run_episode(mode, render)
-  #
-  # def run_episode(self, mode, render):
-  #   while not self.done[mode]:
-  #     self.action[mode] = self.get_action(mode)
-  #     if render:
-  #       self.env[mode].render()
-  #     # Take a step
-  #     self.next_state[mode], self.reward[mode], self.done[mode], _ = self.env[mode].step(self.action[mode])
-  #     self.next_state[mode] = self.state_normalizer(self.next_state[mode])
-  #     self.reward[mode] = self.reward_normalizer(self.reward[mode])
-  #     self.episode_return[mode] += self.reward[mode]
-  #     self.episode_step_count[mode] += 1
-  #     if mode == 'Train':
-  #       # Save experience
-  #       self.save_experience()
-  #       # Update policy
-  #       if self.time_to_learn():
-  #         self.learn()
-  #       self.step_count += 1
-  #     # Update state
-  #     self.state[mode] = self.next_state[mode]
-  #   # End of one episode
-  #   self.save_episode_result(mode)
-  #   # Reset environment
-  #   self.reset_game(mode)
-  #   if mode == 'Train':
-  #     self.episode_count += 1
-
   def save_episode_result(self, mode):
     self.episode_return_list[mode].append(self.episode_return[mode])
     rolling_score = np.mean(self.episode_return_list[mode][-1 * self.rolling_score_window[mode]:])
@@ -277,6 +231,11 @@ class VanillaDQN(BaseAgent):
     if self.step_count % self.test_interval_steps == 0:
       self.logger.add_scalar(f'analysis_log/Q_mean', torch.mean(q), self.step_count)
       self.logger.add_scalar(f'analysis_log/Y_mean', torch.mean(q_target), self.step_count)
+      if self.log_action_gap:
+        q_s_a = self.Q_net[self.update_Q_net_index](batch.state)
+        q_sort = torch.sort(q_s_a, dim=1, descending=True)[0]
+        action_gap = q_sort[:, 0] - q_sort[:, 1]
+        self.logger.add_scalar(f'analysis_log/action_gap', torch.mean(action_gap), self.step_count)
     # Compute loss
     loss = self.loss(q, q_target)
     # Take an optimization step

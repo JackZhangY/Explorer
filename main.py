@@ -24,6 +24,8 @@ def main(config_file, config_idx, seed=1, gpu=False):
   cfg.setdefault('hidden_act', 'ReLU')
   cfg.setdefault('output_act', 'Linear')
   cfg.setdefault('num_eval_episodes', 10)
+  # if need to log action gap, set 'true' in config
+  cfg.setdefault('log_action_gap', False)
 
   # 强制根据函数参数设置seed
   cfg['generate_random_seed'] = False
@@ -55,6 +57,12 @@ def main(config_file, config_idx, seed=1, gpu=False):
   elif cfg['agent']['name'] == 'ALDQN' or cfg['agent']['name'] == 'PALDQN':
     logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"alpha={cfg['agent']['alpha']}_{cfg['seed']}"
+  elif cfg['agent']['name'] == 'clipALDQN' or cfg['agent']['name'] == 'clipPALDQN':
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+               f"alpha={cfg['agent']['alpha']}_ratio={cfg['agent']['clipratio']}_{cfg['seed']}"
+  elif cfg['agent']['name'] == 'genALDQN' or cfg['agent']['name'] == 'decayALDQN':
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+               f"alpha={cfg['agent']['alpha']}_ratio={cfg['agent']['clipratio']}_beta={cfg['agent']['beta']}_{cfg['seed']}"
   else:
     raise Exception('logs_dir is empty!!!!')
 

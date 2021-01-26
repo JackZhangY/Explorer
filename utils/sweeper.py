@@ -209,11 +209,16 @@ def memory_info(exp, file_name='log.txt', runs=1, nbins=10, max_line_length=1000
   plt.close() # close window
 
 if __name__ == "__main__":
-  for agent_config in os.listdir('./configs/'):
-    if not '.json' in agent_config:
-      continue
-    config_file = os.path.join('./configs/', agent_config)
-    sweeper = Sweeper(config_file)
-    # sweeper.print_config_dict(sweeper.config_dicts)
-    # sweeper.print_config_dict(sweeper.generate_config_for_idx(213))
-    print(f'Number of total combinations in {agent_config}:', sweeper.config_dicts['num_combinations'])
+  # for agent_config in os.listdir('./configs/'):
+  #   if not '.json' in agent_config:
+  #     continue
+  #   config_file = os.path.join('./configs/', agent_config)
+  #   sweeper = Sweeper(config_file)
+  #   # sweeper.print_config_dict(sweeper.config_dicts)
+  #   # sweeper.print_config_dict(sweeper.generate_config_for_idx(213))
+  #   print(f'Number of total combinations in {agent_config}:', sweeper.config_dicts['num_combinations'])
+  config_file = os.path.join('./configs/', 'minatar_clipAL.json')
+  sweeper = Sweeper(config_file)
+  num_combinations = sweeper.config_dicts['num_combinations']
+  for i in range(num_combinations):
+    print()

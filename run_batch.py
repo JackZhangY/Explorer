@@ -23,10 +23,26 @@ def train(config_file, config_idx, seeds, gpu=False):
 if __name__ == '__main__':
     mp.set_start_method('spawn')
 
-    train(config_file='minatar_AL.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar_AL.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar_AL.json', config_idx=3, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar_AL.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
-    train(config_file='minatar_AL.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_genAL.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_decayALDQN.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_genAL.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_decayALDQN.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_genAL.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_decayALDQN.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_genAL.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
+    train(config_file='minatar_decayALDQN.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
+
+    # train(config_file='catcher.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='catcher.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='copter.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='copter.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='lunar.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='lunar.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+
+    # train(config_file='minatar_clipAL.json', config_idx=1, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='minatar_clipAL.json', config_idx=2, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # # train(config_file='minatar_clipAL.json', config_idx=3, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='minatar_clipAL.json', config_idx=4, seeds=[1, 2, 3, 4, 5], gpu=True)
+    # train(config_file='minatar_clipAL.json', config_idx=5, seeds=[1, 2, 3, 4, 5], gpu=True)
 
     
