@@ -169,7 +169,7 @@ class decayALDQN(VanillaDQN):
             mask_2_stage = 1 - mask_1_stage
             # add generalized cip AL augmented term
             delta_q = q_cur_max - q_s_a # positive gap
-            decay_delta_q = torch.max((delta_q - delta_q_threshold) * self.beta + delta_q_threshold, 0)
+            decay_delta_q = torch.clamp((delta_q - delta_q_threshold) * self.beta + delta_q_threshold, 0)
 
             # Bellman optimal operator
             q_next = self.Q_net_target[0](batch.next_state).max(1)[0]

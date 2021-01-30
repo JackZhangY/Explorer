@@ -9,6 +9,7 @@ from .ALDQN import ALDQN, PALDQN
 from .clipALDQN import clipALDQN, genALDQN, clipPALDQN, decayALDQN
 from .CVIDQN import CVIDQN
 from .MDQN import MDQN
+from .SoftDQN import SoftDQN
 
 from .REINFORCE import REINFORCE
 from .REINFORCEWithBaseline import REINFORCEWithBaseline

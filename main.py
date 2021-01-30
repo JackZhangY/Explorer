@@ -43,10 +43,13 @@ def main(config_file, config_idx, seed=1, gpu=False):
   elif cfg['agent']['name'] == 'AdamDQN':
     logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"lr={cfg['optimizer']['kwargs']['lr']}_eps={cfg['optimizer']['kwargs']['eps']}_{cfg['seed']}"
-  elif cfg['agent']['name'] == 'MunchausenDQN':
+  elif cfg['agent']['name'] == 'MDQN':
     logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
-               f"tau={cfg['agent']['entropy_temperature']}_alpha={cfg['agent']['log_reward_scaling']}_" \
-               f"clip={cfg['agent']['log_reward_clipping']}_{cfg['seed']}"
+               f"tau={cfg['agent']['ent_temp']}_alpha={cfg['agent']['log_r_scaling']}_" \
+               f"clip={cfg['agent']['log_r_clipping']}_{cfg['seed']}"
+  elif cfg['agent']['name'] == 'SoftDQN':
+    logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
+               f"tau={cfg['agent']['ent_temp']}_{cfg['seed']}"
   elif cfg['agent']['name'] == 'AvgMunchausenDQN':
     logs_dir = f"../all_logs/Explorer/{cfg['env']['name']}/{cfg['agent']['name']}/{cfg['agent']['name']}_" \
                f"tau={cfg['agent']['entropy_temperature']}_alpha={cfg['agent']['log_reward_scaling']}_" \

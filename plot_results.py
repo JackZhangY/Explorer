@@ -82,11 +82,13 @@ temp_alg_dict = {
                  'ALDQN': ['gpu_ALDQN_alpha=0.9',
                            'gpu_ALDQN_alpha=0.8',
                            'gpu_ALDQN_alpha=0.7'],
+                 'MDQN': ['gpu_MDQN_tau=0.03_alpha=0.9_clip=-1'],
                  # 'PALDQN': ['gpu_PALDQN_alpha=0.9'],
                  'clipALDQN': ['gpu_clipALDQN_alpha=0.9_ratio=0.8',
                                'gpu_clipALDQN_alpha=0.8_ratio=0.8'],
                  # 'clipPALDQN': ['gpu_clipPALDQN_alpha=0.9_ratio=0.8'],
-                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7']
+                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7'],
+                 'decayALDQN': ['gpu_decayALDQN_alpha=0.9_ratio=0.8_beta=-0.8']
                  }
 temp_alg_names = collections.OrderedDict(**temp_alg_dict)
 envs_dict['Asterix-MinAtar-v0'] = temp_alg_names
@@ -97,11 +99,14 @@ temp_alg_dict = {
                  'ALDQN': ['gpu_ALDQN_alpha=0.9',
                            'gpu_ALDQN_alpha=0.8',
                            'gpu_ALDQN_alpha=0.7'],
+                 'MDQN': ['gpu_MDQN_tau=0.03_alpha=0.9_clip=-1'],
+    # 'PALDQN': ['gpu_PALDQN_alpha=0.9'],
                  # 'PALDQN': ['gpu_PALDQN_alpha=0.9'],
                  'clipALDQN': ['gpu_clipALDQN_alpha=0.9_ratio=0.8',
                                'gpu_clipALDQN_alpha=0.8_ratio=0.8'],
                  # 'clipPALDQN': ['gpu_clipPALDQN_alpha=0.9_ratio=0.8'],
-                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7']
+                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7'],
+                 'decayALDQN': ['gpu_decayALDQN_alpha=0.9_ratio=0.8_beta=-0.8']
                  }
 temp_alg_names = collections.OrderedDict(**temp_alg_dict)
 envs_dict['Breakout-MinAtar-v0'] = temp_alg_names
@@ -124,11 +129,13 @@ temp_alg_dict = {
                  'ALDQN': ['gpu_ALDQN_alpha=0.9',
                            'gpu_ALDQN_alpha=0.8',
                            'gpu_ALDQN_alpha=0.7'],
+                'MDQN': ['gpu_MDQN_tau=0.03_alpha=0.9_clip=-1'],
                  # 'PALDQN': ['gpu_PALDQN_alpha=0.9'],
                  'clipALDQN': ['gpu_clipALDQN_alpha=0.9_ratio=0.8',
                                'gpu_clipALDQN_alpha=0.8_ratio=0.8'],
                  # 'clipPALDQN': ['gpu_clipPALDQN_alpha=0.9_ratio=0.8']
-                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7']
+                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7'],
+                 'decayALDQN': ['gpu_decayALDQN_alpha=0.9_ratio=0.8_beta=-0.8']
                  }
 temp_alg_names = collections.OrderedDict(**temp_alg_dict)
 envs_dict['Space_invaders-MinAtar-v0'] = temp_alg_names
@@ -139,11 +146,13 @@ temp_alg_dict = {
                  'ALDQN': ['gpu_ALDQN_alpha=0.9',
                            'gpu_ALDQN_alpha=0.8',
                            'gpu_ALDQN_alpha=0.7'],
+                 'MDQN': ['gpu_MDQN_tau=0.03_alpha=0.9_clip=-1'],
                  # 'PALDQN': ['gpu_PALDQN_alpha=0.9'],
                  'clipALDQN': ['gpu_clipALDQN_alpha=0.9_ratio=0.8',
                                'gpu_clipALDQN_alpha=0.8_ratio=0.8'],
                  # 'clipPALDQN': ['gpu_clipPALDQN_alpha=0.9_ratio=0.8'],
-                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7']
+                 'genALDQN': ['gpu_genALDQN_alpha=0.9_ratio=0.8_beta=0.7'],
+                 'decayALDQN': ['gpu_decayALDQN_alpha=0.9_ratio=0.8_beta=-0.8']
                  }
 temp_alg_names = collections.OrderedDict(**temp_alg_dict)
 envs_dict['Seaquest-MinAtar-v0'] = temp_alg_names
